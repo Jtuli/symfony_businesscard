@@ -27,20 +27,28 @@ class AdminGlobalsController extends AbstractController
         $this->em = $em;
     }
 
-      /**
+        /**
      * Undocumented function
-     * @Route("/admin", name="admin.globals")
+     * @Route("/admin", name="admin.globals.index")
      * @return Response
      */
-    public function edit(Globals $globals, Request $request)
+    public function index(GlobalsRepository $globalsRepository,Request $request): Response
     {
-        $form = $this->createForm(GlobalsType::class, $globals);
-        $form->handleRequest($request);
 
+       /*return $this->render('admin/index.html.twig', [
+            'current_menu' => 'admin.index',
+            'items' => $globalsRepository->findOneBy(array('id' => 1))
+            
+        ]);*/
+        $globals = $globalsRepository->findOneBy(array('id' => 1));
+        $form = $this->createForm(GlobalsType::class, $globals);
+
+        $form->handleRequest($request);
+    
         if ($form->isSubmitted() && $form->isValid()) {
             $this->em->flush();
-            $this->addFlash('success', 'Article modifié avec succès');
-            return $this->redirectToRoute('admin.globals');
+            $this->addFlash('success', 'Page modifiée avec succès');
+            return $this->redirectToRoute('admin.globals.index');
 
         }
         return $this->render('admin/index.html.twig', [
@@ -48,4 +56,6 @@ class AdminGlobalsController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+
 }

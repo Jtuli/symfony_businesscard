@@ -1,27 +1,43 @@
-        <div class="container">
-        
+        {% extends 'base.html.twig' %}
+
+        {% block title 'VisitCard'%}
+        {% block body %}
+             
+           <div class="container p-5 mt-4 bg-bo">
+
+                    {% for message in app.flashes('success') %}
+                <div class="alert alert-success"> {{ message }}</div>
+
+                  {% endfor %}
         {{ form_start(form)}}
         <div class="row">
-            
-                <div class="col-md-8">{{ form_row(form.title)}}</div>
-                <div class="col-md-8">{{ form_row(form.content)}}</div>
-            
-                <div class="col-md-4">
-                {% if item.filename %}
+                
+                <div class="col-md-6">{{ form_row(form.name)}}
+                {{ form_row(form.description)}}
+                {{ form_row(form.color)}}</div>
+
+                 <div class="col-md-4 text-center">
+               {% if globals.filename %}
                         
-                        <img src="{{ vich_uploader_asset(item, 'imageFile' ) | imagine_filter('thumb') }}" alt="card-img-top" style="width:100%; height: auto;">
+                        <img src="{{ vich_uploader_asset(globals, 'imageFile' ) | imagine_filter('thumb') }}" alt="card-img-top" style="height: auto;" id="avatar">
                 {% else %}
-                        <img src="{{ 'images/items/empty.jpg' | imagine_filter('thumb') }}" alt="card-img-top" style="width:100%; height: auto;">
+                        <img src="{{ 'images/avatar/empty.jpg' | imagine_filter('thumb') }}" alt="card-img-top" style="height: auto;" id="avatar">
 
                 {% endif %}
-                    {{ form_row(form.imageFile)}}
-                    {{ form_row(form.category)}}
-                    {{ form_row(form.tags)}}
-                    {{ form_row(form.visible)}}
-                    <button class="btn btn-primary">{{ button|default('Enregistrer')}}</button>
-                </div>
 
-            
-        </div>
+                
+                {{ form_row(form.imageFile)}}
+
+                {{ form_row(form.password)}}
+                    
+                   
+                </div>
+                
+
+            </div>
+         <button class="btn btn-primary">{{ button|default('Enregistrer')}}</button>
+
         {{ form_end(form)}}
         </div>
+
+        {% endblock %}

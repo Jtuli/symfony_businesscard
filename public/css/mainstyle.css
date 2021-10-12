@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Arsenal&display=swap');
+
+html{
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  height: 100%;
+ }
+ a {text-decoration: none;}
+
+body {
+
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+ }
+
+ 
+ /* Screens Settings */
+.mainscreen {
+
+  /*display: table-cell;*/
+  height: 100vh;
+  font-family: 'Sen', sans-serif;
+}
+
+#avatar {
+  border-radius: 50%;
+}
+
+#f_bloc {
+  width:80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.itm {
+  display : inline-block;
+}
+
+.itm a, .itm img {
+  height: 2vw;
+  margin: 5px;
+}
+
+
+.itm img:hover {
+   -webkit-transform: scale(1.1);
+   transform: scale(1.1);
+ }
+
+
+
+label
+{
+    display: inline-block;
+    white-space: nowrap;
+}
+
+h1 {
+
+  font-family: 'Arsenal', sans-serif;
+}
+
+.bg-bo {
+  background-color: #fff6;
+}
+
+
+.main {
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  animation-duration: 5s;
+}

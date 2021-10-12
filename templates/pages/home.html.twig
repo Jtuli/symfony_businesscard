@@ -3,6 +3,17 @@
 {% block title 'VisitCard'%}
 {% block body %}
 
+        <div class="container-fluid text-center position-relative mainscreen" >
+        <div class="container position-absolute top-50 start-50 translate-middle">
+             {% if globals.filename %}
+                        
+                        <img src="{{ vich_uploader_asset(globals, 'imageFile' ) | imagine_filter('thumb') }}" alt="card-img-top" style="height: auto;" id="avatar">
+                {% else %}
+                        <img src="{{ 'images/avatar/empty.jpg' | imagine_filter('thumb') }}" alt="card-img-top" style=" height: auto;" id="avatar">
 
-
+                {% endif %}
+            <h1>{{globals.name}}</h1>
+            <p> {{globals.description}}</p>
+        </div>
+        </div>
 {% endblock %}

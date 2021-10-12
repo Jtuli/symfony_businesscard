@@ -3,7 +3,11 @@
 namespace App\Form;
 
 use App\Entity\Globals;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ColorType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,8 +18,11 @@ class GlobalsType extends AbstractType
         $builder
             ->add('name')
             ->add('description')
-            ->add('color')
-            ->add('filename')
+            ->add('color', ColorType::class)
+            ->add('imageFile', FileType::class, [
+                'required' => false
+            ])
+            ->add('password', PasswordType::class)
         ;
     }
 
