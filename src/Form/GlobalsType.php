@@ -3,11 +3,9 @@
 namespace App\Form;
 
 use App\Entity\Globals;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ColorType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -22,14 +20,17 @@ class GlobalsType extends AbstractType
             ->add('imageFile', FileType::class, [
                 'required' => false
             ])
-            ->add('password', PasswordType::class)
-        ;
+            //->add('socials', SocialType::class)
+            ;
+            
+        
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => Globals::class,
+            'translation_domain' => 'forms'
         ]);
     }
 }

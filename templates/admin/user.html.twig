@@ -1,0 +1,24 @@
+        {% extends 'base.html.twig' %}
+
+        {% block title %} {{ 'Password reset' | trans }}{% endblock %}
+        {% block body %}
+        {% include 'admin/admin_panel.html.twig' %}
+           <div class="container p-5 bg-bo">
+        {{ form_start(form)}}
+        <div class="row">
+             {{form_rest(form)}}
+                 
+                </div>
+                <div class="row">
+        
+                </div>
+                
+              <button class="btn btn-primary">{{ 'Save'| trans }}</button>
+            </div>
+       
+
+        {{ form_end(form)}}
+        </div>
+        </div>
+
+        {% endblock %}

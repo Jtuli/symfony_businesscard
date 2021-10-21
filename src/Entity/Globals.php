@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\GlobalsRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Doctrine\ORM\Mapping as ORM;
@@ -52,6 +54,15 @@ class Globals
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $updated_at;
+
+
+
+
+
+    public function __toString()
+   {
+      return strval( $this->getId() );
+   }
 
     public function getId(): ?int
     {
@@ -145,4 +156,6 @@ class Globals
 
         return $this;
     }
+
+
 }

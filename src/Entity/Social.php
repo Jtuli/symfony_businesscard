@@ -2,7 +2,8 @@
 
 namespace App\Entity;
 
-use App\Repository\SocialRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Social
 {
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -28,10 +30,17 @@ class Social
     private $link;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="boolean")
      */
-    private $filename;
+    private $visible;
 
+
+    public function __toString()
+   {
+      return strval( $this->getId() );
+   }
+    
+   
     public function getId(): ?int
     {
         return $this->id;
@@ -61,15 +70,16 @@ class Social
         return $this;
     }
 
-    public function getFilename(): ?string
+    public function getVisible(): ?bool
     {
-        return $this->filename;
+        return $this->visible;
     }
 
-    public function setFilename(?string $filename): self
+    public function setVisible(bool $visible): self
     {
-        $this->filename = $filename;
+        $this->visible = $visible;
 
         return $this;
     }
+
 }

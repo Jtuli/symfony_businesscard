@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title 'VisitCard'%}
+{% block title %}{% if globals.name is defined %} {{globals.name}} {% endif %}{% endblock %}
 {% block body %}
 
-        <div class="container-fluid text-center position-relative mainscreen" >
+        <div class="container-fluid text-center position-relative mainscreen animated fadeInUp" >
         <div class="container position-absolute top-50 start-50 translate-middle">
              {% if globals.filename %}
                         
@@ -14,6 +14,23 @@
                 {% endif %}
             <h1>{{globals.name}}</h1>
             <p> {{globals.description}}</p>
+         <ul class="list-group list-group-horizontal justify-content-md-center">
+            {% for social in socials %}
+                        {% if social.name == "E-mail" %} 
+                         <li class="social-item"><a href="mailto:{{social.link}}">
+                               <img src="images/icons/{{social.name}}.png">
+                        </a>
+                        </li>
+                        {% else %}
+                         <li class="social-item"><a href="{{social.link}}">
+                               <img src="images/icons/{{social.name}}.png">
+                        </a>
+                        </li>
+                        {% endif %}
+                        
+                       
+            {% endfor %}
+              </ul>
         </div>
         </div>
 {% endblock %}

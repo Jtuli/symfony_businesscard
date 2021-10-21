@@ -2,7 +2,6 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Globals;
 use App\Form\GlobalsType;
 use App\Repository\GlobalsRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -32,7 +31,7 @@ class AdminGlobalsController extends AbstractController
      * @Route("/admin", name="admin.globals.index")
      * @return Response
      */
-    public function index(GlobalsRepository $globalsRepository,Request $request): Response
+    public function index(GlobalsRepository $globalsRepository, Request $request): Response
     {
 
        /*return $this->render('admin/index.html.twig', [
@@ -42,6 +41,8 @@ class AdminGlobalsController extends AbstractController
         ]);*/
         $globals = $globalsRepository->findOneBy(array('id' => 1));
         $form = $this->createForm(GlobalsType::class, $globals);
+                        
+        
 
         $form->handleRequest($request);
     
@@ -52,6 +53,7 @@ class AdminGlobalsController extends AbstractController
 
         }
         return $this->render('admin/index.html.twig', [
+            'current_menu' => 'admin.globals.index',
             'globals' => $globals,
             'form' => $form->createView()
         ]);

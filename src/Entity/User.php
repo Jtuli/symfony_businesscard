@@ -35,6 +35,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $password;
 
+    /**
+     * New password
+     *
+     * @var string
+     */
+    private $newpassword;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -117,5 +124,29 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * Get new password
+     *
+     * @return  string
+     */ 
+    public function getNewpassword()
+    {
+        return $this->newpassword;
+    }
+
+    /**
+     * Set new password
+     *
+     * @param  string  $newpassword  New password
+     *
+     * @return  self
+     */ 
+    public function setNewpassword(string $newpassword)
+    {
+        $this->newpassword = $newpassword;
+
+        return $this;
     }
 }

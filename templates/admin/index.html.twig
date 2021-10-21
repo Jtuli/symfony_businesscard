@@ -1,9 +1,10 @@
         {% extends 'base.html.twig' %}
 
-        {% block title 'VisitCard'%}
+        {% block title %} {{ 'Admin panel' | trans }}{% endblock %}
         {% block body %}
+        {% include 'admin/admin_panel.html.twig' %}
              
-           <div class="container p-5 mt-4 bg-bo">
+           <div class="container p-5 bg-bo">
 
                     {% for message in app.flashes('success') %}
                 <div class="alert alert-success"> {{ message }}</div>
@@ -28,16 +29,15 @@
                 
                 {{ form_row(form.imageFile)}}
 
-                {{ form_row(form.password)}}
-                    
                    
                 </div>
                 
 
             </div>
-         <button class="btn btn-primary">{{ button|default('Enregistrer')}}</button>
+         <button class="btn btn-primary">{{ 'Save'| trans }}</button>
 
         {{ form_end(form)}}
+        </div>
         </div>
 
         {% endblock %}

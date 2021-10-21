@@ -2,17 +2,19 @@
 
 namespace App\Controller;
 
-use App\Entity\Globals;
+
 use App\Repository\GlobalsRepository;
+use App\Repository\SocialRepository;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 
 class HomeController extends AbstractController
 {
-    public function __construct(GlobalsRepository $repository)
+    public function __construct(GlobalsRepository $globalsrepository, SocialRepository $socialRepository)
     {
-        $this->repository = $repository;
+        $this->globalsrepository = $globalsrepository;
+        $this->socialRepository = $socialRepository;
     }
     /**
      * @Route("/", name="home")
@@ -22,10 +24,12 @@ class HomeController extends AbstractController
     {
         
         
-        $globals= $this->repository->findOneBy(['id' => 1]);
+        $globals= $this->globalsrepository->findOneBy(['id' => 1]);
+        $socials = $this->socialRepository->findVisibleQuery();
         return $this->render('pages/home.html.twig', [
             'current_menu' => 'home',
-            'globals' => $globals
+            'globals' => $globals,
+            'socials' => $socials
 
         ]);
     }
